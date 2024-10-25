@@ -16,40 +16,37 @@ public class QuickPassProject {
      */
     public static void main(String[] args) {
    
-
+        int menuprincipal;
+        menuprincipal = Menus.MenuPrincipal();
        
-        //Main Menu
+       
+        //Menu Principal
         
-        Menus.MenuPrincipal();
-        
-        do {
-            switch(Menus.MenuPrincipal()) {
+        do {     
+            switch(menuprincipal) {
 
                 case 1:  //Modulo 1         
 
-                    Menus.GestionQuickpass();
-                            
+                    Menus.GestionQuickpass();                         
                     break;     
                     
                 case 2: //Modulo 2
                  
                     Menus.GestionAccessos();
-                    
                     break;
                     
                 case 3: //Modulo 3
-                    Menus.Reportes();
-                    
+                    Menus.Reportes();                    
                     break;
                     
                 case 4: 
                     JOptionPane.showMessageDialog(null, "Saliendo del programa...");
-                    break;
+                    break;    
                     
                 default:
                     JOptionPane.showMessageDialog(null, "Datos proporcionados incorrectos"); 
             }
-         } while (Menus.MenuPrincipal() < 4);
+         } while (Menus.MenuPrincipal() != 4);
         
         
         //Test
