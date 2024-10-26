@@ -22,30 +22,27 @@ public class Menus {
                                                             3- Reportes 
                                                             4- Salir 
                                                             """));
+
+                        
     }   
     
     
-    
-    public static void GestionQuickpass() {
-        int modulo1;
-        do {
-            modulo1 = Integer.parseInt(JOptionPane.showInputDialog("""
+    public static int GestionQuickpass() {
+        return Integer.parseInt(JOptionPane.showInputDialog("""
                                                                    ---Gestion Quickpass--- 
-                                                                   Seleccione una opci\u00f3n del men\u00fa 
+                                                                   Seleccione una opcion del menu
                                                                    1- Realizar Consulta 
                                                                    2- Agregar Sticker 
                                                                    3- Bloquear Sticker 
                                                                    4- Eliminar Sticker 
-                                                                   5- Volver al men\u00fa principal 
+                                                                   5- Volver al menu principal 
                                                                    """));
-        } while (modulo1 != 5);
+
     }
 
     
-    public static void GestionAccessos() {
-        int modulo2;
-         do {
-             modulo2 = Integer.parseInt(JOptionPane.showInputDialog("""
+    public static int GestionAccessos() {
+        return Integer.parseInt(JOptionPane.showInputDialog("""
                                                                     ---Gestion de Accessos--- 
                                                                     Seleccione una opcion del menu 
                                                                     1- Consulta por filial 
@@ -53,23 +50,21 @@ public class Menus {
                                                                     3- Consulta por codigo 
                                                                     4- Consulta por placa 
                                                                     5- Volver al menu principal"""));
-         } while (modulo2 != 5);
+
         
     }
     
-    public static void Reportes() {
-        int modulo3;
-         do {
-             modulo3 = Integer.parseInt(JOptionPane.showInputDialog("""
+    public static int Reportes() {
+        return Integer.parseInt(JOptionPane.showInputDialog("""
                                                                     ---Reportes-- 
-                                                                    Seleccione una opcion del menu 
+                                                                    Seleccione una opcion del menu: 
                                                                     1- Total de Accesos Registrados 
                                                                     2- Total de Accesos por filial 
                                                                     3- Total de Quickpass registrados 
                                                                     4- Total de Quickpass Activos e Inactivos 
-                                                                    5-Total de Quickpass eliminados6- Volver al menu principal"""));
+                                                                    5-Total de Quickpass eliminados- Volver al menu principal"""));
          
-         } while (modulo3 != 5);
+  
         
     }    
     
