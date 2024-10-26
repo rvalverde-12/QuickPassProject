@@ -17,6 +17,7 @@ public class QuickPassProject {
     public static void main(String[] args) {
    
         int menuprincipal;
+        int modulo1;
         menuprincipal = Menus.MenuPrincipal();
        
        
@@ -26,23 +27,43 @@ public class QuickPassProject {
             switch(menuprincipal) {
 
                 case 1:  //Modulo 1         
+                    modulo1 = Menus.GestionQuickpass();
 
-                    Menus.GestionQuickpass();                         
+                    do {                                                  
+                        switch (modulo1) {
+
+                        case 1:
+                            // Ingresar accion
+                            break;   
+                        case 2:
+                            // Ingresar accion
+                            break;
+                        case 3:
+                            // Ingresar accion
+                            break;
+                        case 4:
+                            // Ingresar accion
+                            break;
+                        case 5 :
+                            break;
+                        default: 
+                            JOptionPane.showMessageDialog(null, "Ingrese una opcion valida: ");
+                            break;
+                        }  
+                    } while (modulo1 != 5);
+                                            
                     break;     
                     
-                case 2: //Modulo 2
-                 
+                case 2: //Modulo 2                 
                     Menus.GestionAccessos();
                     break;
                     
                 case 3: //Modulo 3
                     Menus.Reportes();                    
-                    break;
-                    
+                    break;                    
                 case 4: 
                     JOptionPane.showMessageDialog(null, "Saliendo del programa...");
-                    break;    
-                    
+                    break;                        
                 default:
                     JOptionPane.showMessageDialog(null, "Datos proporcionados incorrectos"); 
             }
@@ -50,6 +71,36 @@ public class QuickPassProject {
         
         
         //Test
+        
+        /*
+        
+                        do {                                                  
+                    switch (modulo1) {
+                        
+                    case 1:
+                        // Ingresar accion
+                        break;   
+                    case 2:
+                        // Ingresar accion
+                        break;
+                    case 3:
+                        // Ingresar accion
+                        break;
+                    case 4:
+                        // Ingresar accion
+                        break;
+                    case 5 :
+                        break;
+                    default: 
+                        JOptionPane.showMessageDialog(null, "Ingrese una opcion valida: ");
+                        break;
+                    }  
+                } while (modulo1 != 5);
+    
+        
+        
+        
+        */
         
         
 
