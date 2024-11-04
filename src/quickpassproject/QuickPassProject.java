@@ -70,37 +70,7 @@ public class QuickPassProject {
          } while (Menus.MenuPrincipal() != 4);
         
         
-        //Test
-        
-        /*
-        
-                        do {                                                  
-                    switch (modulo1) {
-                        
-                    case 1:
-                        // Ingresar accion
-                        break;   
-                    case 2:
-                        // Ingresar accion
-                        break;
-                    case 3:
-                        // Ingresar accion
-                        break;
-                    case 4:
-                        // Ingresar accion
-                        break;
-                    case 5 :
-                        break;
-                    default: 
-                        JOptionPane.showMessageDialog(null, "Ingrese una opcion valida: ");
-                        break;
-                    }  
-                } while (modulo1 != 5);
-    
-        
-        
-        
-        */
+
         
         
 
