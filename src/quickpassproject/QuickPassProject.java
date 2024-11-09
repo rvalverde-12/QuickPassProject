@@ -33,16 +33,16 @@ public class QuickPassProject {
                         switch (modulo1) {
 
                         case 1:
-                            // Ingresar accion
+                            // Ingresar accion agregar
                             break;   
                         case 2:
-                            // Ingresar accion
+                            // Ingresar accion consultar
                             break;
                         case 3:
-                            // Ingresar accion
+                            // Ingresar accion eliminar por placa
                             break;
                         case 4:
-                            // Ingresar accion
+                            // Ingresar accion eliminar por codigo
                             break;
                         case 5 :
                             break;
