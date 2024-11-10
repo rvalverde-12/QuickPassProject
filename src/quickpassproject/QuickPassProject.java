@@ -19,7 +19,9 @@ public class QuickPassProject {
         int menuprincipal;
         int modulo1;
         menuprincipal = Menus.MenuPrincipal();
-       
+        QuickpassManager manager = new QuickpassManager();
+
+ 
        
         //Menu Principal
         
@@ -39,6 +41,8 @@ public class QuickPassProject {
                             String filial = JOptionPane.showInputDialog("Ingrese la filial: ");
                             String codigo = JOptionPane.showInputDialog("Ingrese el codigo: ");
                             String placa = JOptionPane.showInputDialog("Ingrese la placa: ");
+                            manager.agregarQuickpass(filial, codigo, placa);
+                            
                             break;
                         case 3: //Bloquear Sticker
                             // Ingresar accion
