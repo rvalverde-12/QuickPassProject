@@ -26,22 +26,24 @@ public class QuickPassProject {
         do {     
             switch(menuprincipal) {
 
-                case 1:  //Modulo 1         
+                case 1:  //Modulo 1   - Gestion       
                     modulo1 = Menus.GestionQuickpass();
 
                     do {                                                  
                         switch (modulo1) {
 
-                        case 1:
+                        case 1: //Consultas
                             // Ingresar accion
                             break;   
-                        case 2:
+                        case 2:  // Agregar Sticker
+                            String filial = JOptionPane.showInputDialog("Ingrese la filial: ");
+                            String codigo = JOptionPane.showInputDialog("Ingrese el codigo: ");
+                            String placa = JOptionPane.showInputDialog("Ingrese la placa: ");
+                            break;
+                        case 3: //Bloquear Sticker
                             // Ingresar accion
                             break;
-                        case 3:
-                            // Ingresar accion
-                            break;
-                        case 4:
+                        case 4: // Eliminar Sticker
                             // Ingresar accion
                             break;
                         case 5 :
