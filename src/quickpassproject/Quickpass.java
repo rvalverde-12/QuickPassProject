@@ -11,17 +11,17 @@ package quickpassproject;
 public class Quickpass {
     
     private String filial;
-    private String codigo;
+    private String codigo;  //101 X XXX XXX XXX
     private String placa;
-    private String estado;
+    private String estado; // Aplicar con Enum
     
     public Quickpass (String filial, String codigo, String placa, String estado){
         
         this.filial = filial;
         this.codigo = codigo;
         this.placa = placa;
-        this.estado = estado;
-        
+        this.estado = estado; 
+       
     }
     
     public void setFilial(String filial){
@@ -61,9 +61,6 @@ public class Quickpass {
 }
 
 
-/*Pruebas Alejandro
 
-
-*/
 
     
