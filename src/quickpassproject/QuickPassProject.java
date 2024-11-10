@@ -50,7 +50,7 @@ public class QuickPassProject {
                         case 4: // Eliminar Sticker
                             // Ingresar accion
                             break;
-                        case 5 :
+                        case 5 : //Salir
                             break;
                         default: 
                             JOptionPane.showMessageDialog(null, "Ingrese una opcion valida: ");
@@ -73,14 +73,7 @@ public class QuickPassProject {
                 default:
                     JOptionPane.showMessageDialog(null, "Datos proporcionados incorrectos"); 
             }
-         } while (Menus.MenuPrincipal() != 4);
-        
-        
-
-        
-        
-///Test Randall
-        
+         } while (menuprincipal != 4);
         
         
         
