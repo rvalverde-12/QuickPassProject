@@ -16,7 +16,7 @@ El condominio a contratado los servicios de su grupo de programación para desar
 ### Gestión de Quickpass
 Este módulo permite registrar, consultar, bloquear y eliminar los stiker que la administración va despachando a los condóminos.
 
-####Especificaciones técnicas del módulo de gestión de Quickpass:
+Especificaciones técnicas del módulo de gestión de Quickpass:
 1. Utilizará como medio de almacenamiento un Arreglo de Objetos.
 2. El arreglo deberá contener: Objetos de tipo Quickpass (Filial, Código, Placa, Estado).
 3. Estos datos serán modelados a través de una clase.
@@ -38,7 +38,7 @@ Este módulo permite registrar, consultar, bloquear y eliminar los stiker que la
 ### Gestión de accesos
 Este módulo maneja los accesos y las bitácoras del mismo con el propósito de dotar a la administración sobre la información de quienes accedieron y la frecuencia de los accesos.
 
-####Especificaciones técnicas del módulo de gestión de accesos:
+Especificaciones técnicas del módulo de gestión de accesos:
 1. Utilizará como medio de almacenamiento un archivo txt.
 2. Todas las llamadas a este método de consultas debe registrar la actividad en un documento txt llamado "Historial.txt" donde además de la consulta y resultado debe adjuntar la fecha y hora sacada del sistema de manera automática en conjunto con la información del quickpass, por ejemplo: "Código: 1011234567; Placa: 123123; Filial: A01; Condición: Aceptado; Fecha: 15/05/2024 14:40".
 3. El sistema debe permitir consultar el histórico de accesos de una filial específica.
@@ -48,7 +48,7 @@ Este módulo maneja los accesos y las bitácoras del mismo con el propósito de 
 ### Módulo de reportes
 Este módulo permite ver el comportamiento de los accesos al condominio.
 
-####Especificaciones técnicas del módulo de reportes:
+Especificaciones técnicas del módulo de reportes:
 1. El programa debe leer los TXT y el arreglo de objetos para obtener la siguiente información necesaria para los reportes.
 2. El sistema debe mostrar el total de accesos registrados.
 3. El sistema debe mostrar el total de accesos por filial.
