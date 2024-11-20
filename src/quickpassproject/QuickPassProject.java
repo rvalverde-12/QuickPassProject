@@ -18,24 +18,23 @@ public class QuickPassProject {
    
         int menuprincipal;
         int modulo1;
-        menuprincipal = Menus.MenuPrincipal();
         QuickpassManager manager = new QuickpassManager();
-
+        
  
        
         //Menu Principal
         
         do {     
+            menuprincipal = Menus.MenuPrincipal();
             switch(menuprincipal) {
 
                 case 1:  //Modulo 1   - Gestion       
-                    modulo1 = Menus.GestionQuickpass();
-
-                    do {                                                  
+                    do {             
+                        modulo1 = Menus.GestionQuickpass(); //para evitar bucle infinito
                         switch (modulo1) {
 
                         case 1: //Consultas
-                            // Ingresar accion
+                            manager.consultarTodos();
                             break;   
                         case 2:  // Agregar Sticker
                             String filial = JOptionPane.showInputDialog("Ingrese la filial: ");
