@@ -68,5 +68,14 @@ public class Menus {
         
     }    
     
+    public static int SubMenuEliminar() {
+        return Integer.parseInt(JOptionPane.showInputDialog("""
+                                                           ---Eliminar Sticker---
+                                                           Seleccione una opcion del menu:
+                                                           1- Eliminar por Codigo
+                                                           2- Eliminar por Placa
+                                                           3 - Cancelar
+                                                           """));
+    }
     
 }
