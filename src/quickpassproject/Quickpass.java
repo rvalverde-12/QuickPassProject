@@ -29,7 +29,7 @@ public class Quickpass {
    
     }   
     
-    public String getFilial (String filial) {
+    public String getFilial () {
         return this.filial;
    
     }
@@ -38,8 +38,8 @@ public class Quickpass {
         this.codigo = codigo;
     }
      
-    public String getCodigo(String codigo){
-        return this.codigo;
+    public String getCodigo(){
+         return this.codigo;
         
     }
     
@@ -47,7 +47,7 @@ public class Quickpass {
         this.placa = placa;
     }
     
-    public String getPlaca (String placa){
+    public String getPlaca (){
         return this.placa;
     }
  
@@ -55,9 +55,21 @@ public class Quickpass {
         this.estado = estado;
     }
     
-    public String getEstado (String estado) {
+    public String getEstado () {
         return this.estado;
     }
+    
+    @Override
+    public String toString(){
+        return "Filial: " + filial + 
+                "\nCodigo: " +codigo + 
+                "\nPlaca: " + placa + 
+                "\nEstado: " +estado;
+    }
+
+
+    
+    
 }
 
 
