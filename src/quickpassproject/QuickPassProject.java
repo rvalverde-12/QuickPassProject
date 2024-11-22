@@ -39,10 +39,11 @@ public class QuickPassProject {
                                 subConsulta = Menus.SubMenuConsulta();
                             
                                 switch (subConsulta) {
-                                    case 1: 
+                                    case 1: // Ver todos
                                         manager.consultarTodos();
                                         break;
-                                    case 2:
+                                    case 2: // ver eliminados
+                                        manager.consultarEliminados();
                                         break;
                                     case 3:
                                         break;
@@ -70,7 +71,8 @@ public class QuickPassProject {
                             // Ingresar accion
                             break;
                         case 4: // Eliminar Sticker
-                            // Ingresar accion
+                            String num = JOptionPane.showInputDialog("Ingrese su codigo o placa: ");
+                            manager.eliminarQuickpass(num);
                             break;
                         case 5 : //Salir
                             break;
