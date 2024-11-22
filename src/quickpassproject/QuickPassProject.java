@@ -18,6 +18,7 @@ public class QuickPassProject {
    
         int menuprincipal;
         int modulo1;
+        int subConsulta;
         QuickpassManager manager = new QuickpassManager();
         
  
@@ -34,8 +35,30 @@ public class QuickPassProject {
                         switch (modulo1) {
 
                         case 1: //Consultas
-                            manager.consultarTodos();
-                            break;   
+                            do {
+                                subConsulta = Menus.SubMenuConsulta();
+                            
+                                switch (subConsulta) {
+                                    case 1: 
+                                        manager.consultarTodos();
+                                        break;
+                                    case 2:
+                                        break;
+                                    case 3:
+                                        break;
+                  
+                                    case 4:
+                                        break;
+                                    case 5:
+                                        break;
+                                    default: 
+                                        JOptionPane.showMessageDialog(null, "Ingrese una opcion valida: ");
+                                        break;
+                                         }
+                            } while (subConsulta != 5);
+                            break;  
+                           
+                            
                         case 2:  // Agregar Sticker
                             String filial = JOptionPane.showInputDialog("Ingrese la filial: ");
                             String codigo = JOptionPane.showInputDialog("Ingrese el codigo: ");
@@ -79,7 +102,7 @@ public class QuickPassProject {
         
         
         
-        
+       
         
     }
     
