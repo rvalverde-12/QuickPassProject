@@ -9,7 +9,9 @@ import javax.swing.JOptionPane;
  * @author Lipsky
  */
     public class QuickpassManager {
+   
     private Quickpass[] quickpassLista = new Quickpass[20]; //tamaño maximo se puede ampliar a mas de ser necesario
+    private Quickpass[] quickpassEliminados = new Quickpass[50];
     private int contador = 0;
     private int contadorEliminados = 0;
     
@@ -42,11 +44,44 @@ import javax.swing.JOptionPane;
             }
       
        }
-    
-       public void eliminarQuickpass(String i) {
+ 
+       public void eliminarQuickpass(String num) {
+           for(int i = 0; i < contador; i++) {
+                if (quickpassLista[i].getCodigo().equals(num) || quickpassLista[i].getPlaca().equals(num)) {
+                    Quickpass eliminado = quickpassLista[i];
+                    quickpassLista[i] = quickpassLista[contador -1];
+                    quickpassLista[contador -1] = null;
+                    contador--;
+
+                if(contadorEliminados < quickpassEliminados.length) {
+                    eliminado.setEstado("Eliminado");
+                    quickpassEliminados[contadorEliminados++] = eliminado;
+                    JOptionPane.showMessageDialog(null, "Quickpass eliminado exitosamente.");
+                } else {
+                    JOptionPane.showMessageDialog(null,"No hay espacio para mas Quickpass eliminados.");
+                    
+                }
+                return;
+                
+                }   
+                
+            }
+           JOptionPane.showMessageDialog(null,"Quickpass no encontrado.");
+        }
+       
+       public void consultarEliminados(){
+           for (int i = 0; i< contadorEliminados; i++) {
+               JOptionPane.showMessageDialog(null,quickpassEliminados[i]);
+           }
+       }
+      
            
        }
     
     
     
-    }
+    
+    
+    
+ 
+    
