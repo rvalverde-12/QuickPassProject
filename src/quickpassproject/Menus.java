@@ -62,11 +62,24 @@ public class Menus {
                                                                     2- Total de Accesos por filial 
                                                                     3- Total de Quickpass registrados 
                                                                     4- Total de Quickpass Activos e Inactivos 
-                                                                    5-Total de Quickpass eliminados- Volver al menu principal"""));
+                                                                    5- Total de Quickpass eliminados- Volver al menu principal"""));
          
   
         
     }    
+    
+    
+    public static int SubMenuConsulta() {
+        return Integer.parseInt(JOptionPane.showInputDialog( """
+                                                             ---Consulta---
+                                                             Seleccione una opcion del menu:
+                                                              1- Consultar todos 
+                                                              2- Consultar eliminados
+                                                              3- Consulta por filial 
+                                                              4- Consulta por placa
+                                                              5- Volver
+                                                             """));
+    }
     
     public static int SubMenuEliminar() {
         return Integer.parseInt(JOptionPane.showInputDialog("""
@@ -74,7 +87,7 @@ public class Menus {
                                                            Seleccione una opcion del menu:
                                                            1- Eliminar por Codigo
                                                            2- Eliminar por Placa
-                                                           3 - Cancelar
+                                                           3- Cancelar
                                                            """));
     }
     
