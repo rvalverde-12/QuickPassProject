@@ -45,9 +45,9 @@ import javax.swing.JOptionPane;
       
        }
  
-       public void eliminarQuickpass(String num) {
+       public void eliminarQuickpass(String num1) {
            for(int i = 0; i < contador; i++) {
-                if (quickpassLista[i].getCodigo().equals(num) || quickpassLista[i].getPlaca().equals(num)) {
+                if (quickpassLista[i].getCodigo().equals(num1) || quickpassLista[i].getPlaca().equals(num1)) {
                     Quickpass eliminado = quickpassLista[i];
                     quickpassLista[i] = quickpassLista[contador -1];
                     quickpassLista[contador -1] = null;
@@ -73,6 +73,18 @@ import javax.swing.JOptionPane;
            for (int i = 0; i< contadorEliminados; i++) {
                JOptionPane.showMessageDialog(null,quickpassEliminados[i]);
            }
+       }
+       
+       public void bloquearQuickpass(String num2) {
+           for (int i = 0; i < contador; i++) {
+               
+               if(quickpassLista[i].getCodigo().equals(num2) || quickpassLista[i].getPlaca().equals(num2)) {
+                   quickpassLista[i].setEstado("Bloqueado");
+                   JOptionPane.showMessageDialog(null,"Quickpass bloqueado exitosamente.");
+                   return;
+               }
+           }
+           JOptionPane.showMessageDialog(null,"Quickpass no encontrado.");
        }
       
            
