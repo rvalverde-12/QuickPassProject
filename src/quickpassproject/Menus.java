@@ -47,7 +47,7 @@ public class Menus {
                                                               1- Consultar todos 
                                                               2- Consultar eliminados
                                                               3- Consulta por filial 
-                                                              4- Consulta por placa
+                                                              4- Consulta por codigo o placa
                                                               5- Volver
                                                              """));
     }
