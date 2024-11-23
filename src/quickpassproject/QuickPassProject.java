@@ -68,11 +68,12 @@ public class QuickPassProject {
                             
                             break;
                         case 3: //Bloquear Sticker
-                            // Ingresar accion
+                            String num1 = JOptionPane.showInputDialog(null,"Ingrese codigo o placa:");
+                            manager.bloquearQuickpass(num1);
                             break;
                         case 4: // Eliminar Sticker
-                            String num = JOptionPane.showInputDialog("Ingrese su codigo o placa: ");
-                            manager.eliminarQuickpass(num);
+                            String num2 = JOptionPane.showInputDialog("Ingrese codigo o placa: ");
+                            manager.eliminarQuickpass(num2);
                             break;
                         case 5 : //Salir
                             break;
