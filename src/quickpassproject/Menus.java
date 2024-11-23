@@ -27,7 +27,7 @@ public class Menus {
     }   
     
     
-    public static int GestionQuickpass() {
+    public static int GestionQuickpass() { // Modulo 1
         return Integer.parseInt(JOptionPane.showInputDialog("""
                                                                    ---Gestion Quickpass--- 
                                                                    Seleccione una opcion del menu
@@ -39,9 +39,21 @@ public class Menus {
                                                                    """));
 
     }
+    
+    public static int SubMenuConsulta() { //Submenu Modulo 1
+        return Integer.parseInt(JOptionPane.showInputDialog( """
+                                                             ---Consulta---
+                                                             Seleccione una opcion del menu:
+                                                              1- Consultar todos 
+                                                              2- Consultar eliminados
+                                                              3- Consulta por filial 
+                                                              4- Consulta por placa
+                                                              5- Volver
+                                                             """));
+    }
 
     
-    public static int GestionAccessos() {
+    public static int GestionAccessos() { //Modulo 2
         return Integer.parseInt(JOptionPane.showInputDialog("""
                                                                     ---Gestion de Accessos--- 
                                                                     Seleccione una opcion del menu 
@@ -54,7 +66,7 @@ public class Menus {
         
     }
     
-    public static int Reportes() {
+    public static int Reportes() { //Modulo 3
         return Integer.parseInt(JOptionPane.showInputDialog("""
                                                                     ---Reportes-- 
                                                                     Seleccione una opcion del menu: 
@@ -69,19 +81,9 @@ public class Menus {
     }    
     
     
-    public static int SubMenuConsulta() {
-        return Integer.parseInt(JOptionPane.showInputDialog( """
-                                                             ---Consulta---
-                                                             Seleccione una opcion del menu:
-                                                              1- Consultar todos 
-                                                              2- Consultar eliminados
-                                                              3- Consulta por filial 
-                                                              4- Consulta por placa
-                                                              5- Volver
-                                                             """));
-    }
+
     
-    //esta ya no va hacer falta***
+    //Talvez no sea necesario***
     public static int SubMenuEliminar() {
         return Integer.parseInt(JOptionPane.showInputDialog("""
                                                            ---Eliminar Sticker---
