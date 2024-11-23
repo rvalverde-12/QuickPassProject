@@ -50,6 +50,7 @@ public class QuickPassProject {
                                         break;
                   
                                     case 4: // consultar por placa
+                                        manager.consultarPlacaCodigo();
                                         break;
                                     case 5: //volver
                                         break;
