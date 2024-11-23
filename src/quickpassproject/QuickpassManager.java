@@ -17,8 +17,16 @@ import javax.swing.JOptionPane;
     
     
         public boolean validarCodigo(String codigo) {
-            return codigo.matches("101-\\d{7}");
+            if (codigo.length()!=11) { //valida que cumpla con los 11 digitos
+                return false; 
+            }
+            
+            if (!codigo.substring(0,4).equals("101-")){ //valida que empiece con 101-
+                return false; 
+            }
+            return true;
         }
+        
 
         public void agregarQuickpass(String filial, String codigo, String placa){
             if (validarCodigo(codigo)) {
@@ -74,6 +82,28 @@ import javax.swing.JOptionPane;
                JOptionPane.showMessageDialog(null,quickpassEliminados[i]);
            }
        }
+       
+        public void consultarFilial(){
+            String filnum1;
+            Boolean encontrado;
+
+            filnum1 = JOptionPane.showInputDialog("Ingrese el numero de filial: ");
+           for (int i = 0; i< contador; i++) {
+                if (quickpassLista[i].getFilial().equals(filnum1)) {
+                    JOptionPane.showMessageDialog(null, "Filial encontrada: \n" +
+                    "Filial: " + quickpassLista[i].getFilial() + "\n" +
+                    "Codigo: " + quickpassLista[i].getCodigo() + "\n" +
+                    "Placa: " +quickpassLista[i].getPlaca() + "\n" +
+                    "Estado: " + quickpassLista[i].getEstado());
+
+                }
+                              
+                                   
+            }
+        }
+     
+       
+       
        
        public void bloquearQuickpass(String num2) {
            for (int i = 0; i < contador; i++) {
