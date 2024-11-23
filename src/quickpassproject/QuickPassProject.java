@@ -45,12 +45,13 @@ public class QuickPassProject {
                                     case 2: // ver eliminados
                                         manager.consultarEliminados();
                                         break;
-                                    case 3:
+                                    case 3: //consultar por filial
+                                        manager.consultarFilial();
                                         break;
                   
-                                    case 4:
+                                    case 4: // consultar por placa
                                         break;
-                                    case 5:
+                                    case 5: //volver
                                         break;
                                     default: 
                                         JOptionPane.showMessageDialog(null, "Ingrese una opcion valida: ");
