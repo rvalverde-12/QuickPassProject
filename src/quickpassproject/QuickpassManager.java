@@ -110,24 +110,29 @@ import javax.swing.JOptionPane;
             
             num1 = JOptionPane.showInputDialog("Ingrese el numero de placa o codigo: ");
             for (int i = 0; i < contador; i++) {
-                if(quickpassLista[i].getCodigo().equals(num1) || quickpassLista[i].getPlaca().equals(num1)) {
-                    JOptionPane.showMessageDialog(null, "Datos encontrados: \n" +
-                        "Filial: " + quickpassLista[i].getFilial() + "\n" +
-                        "Codigo: " + quickpassLista[i].getCodigo() + "\n" +
-                        "Placa: " +quickpassLista[i].getPlaca() + "\n" +
-                        "Estado: " + quickpassLista[i].getEstado());
-                    encontrado = true;
                 
-                } else if (encontrado == false) {
-                    JOptionPane.showMessageDialog(null,"Datos ingresados invalidos");
-                                                }
+                if (quickpassLista[i].getCodigo().equals(num1) || quickpassLista[i].getPlaca().equals(num1)) {
+                    if (quickpassLista[i].getEstado().equals("Bloqueado")){
+                        JOptionPane.showMessageDialog(null,"Quickpass esta bloqueado. Contacte gerencia.");
+                    } else {
+               
+               
+                        if(quickpassLista[i].getCodigo().equals(num1) || quickpassLista[i].getPlaca().equals(num1)) {
+                            JOptionPane.showMessageDialog(null, "Datos encontrados: \n" +
+                                "Filial: " + quickpassLista[i].getFilial() + "\n" +
+                                "Codigo: " + quickpassLista[i].getCodigo() + "\n" +
+                                "Placa: " +quickpassLista[i].getPlaca() + "\n" +
+                                "Estado: " + quickpassLista[i].getEstado());
+                            encontrado = true;
+
+                        } else if (encontrado == false) {
+                            JOptionPane.showMessageDialog(null,"Datos ingresados invalidos");
+                                                        }
+                        }  
+                 } 
             }
-            
         }
-     
-       
-       
-       
+
        public void bloquearQuickpass(String num2) {
            for (int i = 0; i < contador; i++) {
                
