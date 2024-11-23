@@ -81,6 +81,7 @@ public class Menus {
                                                              """));
     }
     
+    //esta ya no va hacer falta***
     public static int SubMenuEliminar() {
         return Integer.parseInt(JOptionPane.showInputDialog("""
                                                            ---Eliminar Sticker---
