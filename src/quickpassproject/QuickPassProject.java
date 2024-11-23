@@ -49,7 +49,7 @@ public class QuickPassProject {
                                         manager.consultarFilial();
                                         break;
                   
-                                    case 4: // consultar por placa
+                                    case 4: // consultar por placa o codigo
                                         manager.consultarPlacaCodigo();
                                         break;
                                     case 5: //volver
