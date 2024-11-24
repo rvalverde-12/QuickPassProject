@@ -57,10 +57,10 @@ public class Menus {
         return Integer.parseInt(JOptionPane.showInputDialog("""
                                                                     ---Gestion de Accessos--- 
                                                                     Seleccione una opcion del menu 
-                                                                    1- Consulta por filial 
-                                                                    2- Consulta por fecha 
-                                                                    3- Consulta por codigo 
-                                                                    4- Consulta por placa 
+                                                                    1- Registrar accesso
+                                                                    2- Consulta por filial 
+                                                                    3- Consulta por fecha 
+                                                                    4- Consulta por codigo o placa 
                                                                     5- Volver al menu principal"""));
 
         
