@@ -18,9 +18,10 @@ public class QuickPassProject {
    
         int menuprincipal;
         int modulo1;
+        int modulo2;
         int subConsulta;
         QuickpassManager manager = new QuickpassManager();
-        
+ 
  
        
         //Menu Principal
@@ -63,10 +64,8 @@ public class QuickPassProject {
                            
                             
                         case 2:  // Agregar Sticker
-                            String filial = JOptionPane.showInputDialog("Ingrese la filial: ");
-                            String codigo = JOptionPane.showInputDialog("Ingrese el codigo: ");
-                            String placa = JOptionPane.showInputDialog("Ingrese la placa: ");
-                            manager.agregarQuickpass(filial, codigo, placa);
+                            
+                            manager.agregarQuickpass();
                             
                             break;
                         case 3: //Bloquear Sticker
@@ -87,8 +86,28 @@ public class QuickPassProject {
                                             
                     break;     
                     
-                case 2: //Modulo 2                 
-                    Menus.GestionAccessos();
+                case 2: //Modulo 2     
+                    do {
+                        
+                        modulo2 = Menus.GestionAccessos();   
+                        switch(modulo2) {
+                            case 1: // Registrar acceso
+                                manager.registrarAcceso();
+                                break;
+                            case 2: // Consulta por filial
+                                break;
+                            case 3: // Consulta por fecha
+                                break;
+                            case 4: // Consulta por codigo o placa
+                                break;
+                            case 5: // Volver
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null,"Ingrese una opcio valida");
+                        }
+    
+                    } while (modulo2 != 5);
+                    
                     break;
                     
                 case 3: //Modulo 3
