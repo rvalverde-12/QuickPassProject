@@ -4,8 +4,13 @@
  */
 package quickpassproject;
 import javax.swing.JOptionPane;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime; // Fecha Y Hora
+import java.time.format.DateTimeFormatter; // Dar Formato a Fecha y Hora
+
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 /**
  *
@@ -55,7 +60,7 @@ import java.time.format.DateTimeFormatter;
         
             if (validarCodigo(codigo)) {
                 if (contador < quickpassLista.length) {
-                    quickpassLista[contador++] = new Quickpass(filial, codigo, placa, "Activo");
+                    quickpassLista[contador++] = new Quickpass(filial, codigo, placa, "Activo"); //constructor añade objetos a la lista
                     JOptionPane.showMessageDialog(null, "Quickpass agregado exitosamente." + "\nFilial: " + filial +"\nCodigo"
                             + codigo + "\nPlaca: " + placa);
 
@@ -201,12 +206,16 @@ import java.time.format.DateTimeFormatter;
                                   quickpassLista[i].getPlaca(),
                                   "Aceptado",
                                  obtenerFechaHora());
+
                             JOptionPane.showMessageDialog(null, "Acceso registrado exitosamente: \n" +
                                                                             "Filial: " + quickpassRegistro[contadorRegistro-1].getFilial() + "\n" +
                                                                             "Codigo: " + quickpassRegistro[contadorRegistro-1].getCodigo() + "\n" +
                                                                             "Placa: " + quickpassRegistro[contadorRegistro-1].getPlaca() + "\n" +
                                                                             "Condicion: " +quickpassRegistro[contadorRegistro-1].getCondicion() + "\n" +
                                                                             "Fecha y Hora: " + quickpassRegistro[contadorRegistro-1].getFechaHora());
+                            
+                            escribirTxT(quickpassLista[i].getFilial(), quickpassLista[i].getCodigo(),quickpassLista[i].getPlaca(),"Aceptado",obtenerFechaHora());
+                            
                             } else {
                             JOptionPane.showMessageDialog(null, "No hay espacio para registrar mas accesos \n");
                             }return;
@@ -229,6 +238,73 @@ import java.time.format.DateTimeFormatter;
            return fechaHoraActual.format(formato); 
       
        }
+       
+       
+       
+       public void escribirTxT(String filial, String codigo, String placa, String condicion, String fechaHora){
+            String directorio = "C:\\Users\\Lipsky\\Desktop\\Tools\\Universidad\\Cuatri 2\\Intro Progra\\FinalProject\\DB_Registros.txt";
+            String datos = "Filial: " + filial + "\n" +
+                           "Codigo: " + codigo + "\n" +
+                           "Placa: " + placa + "\n" +
+                           "Condicion: " + condicion + "\n" +
+                           "Fecha y Hora: " + fechaHora + "\n"+
+                           "-----------------------\n";
+            try { 
+                FileWriter writer = new FileWriter(directorio, true);
+                writer.write(datos); //escribir
+                writer.close(); //cerrar archivo
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+                
+            }
+           
+       } 
+       
+       
+       public void consultaAccesoFilial() {
+            String filialBuscada = JOptionPane.showInputDialog("Ingrese el número de la filial que desea consultar:");
+            String directorio = "C:\\Users\\Lipsky\\Desktop\\Tools\\Universidad\\Cuatri 2\\Intro Progra\\FinalProject\\DB_Registros.txt";
+            StringBuilder registrosEncontrados = new StringBuilder();
+            boolean encontrado = false;
+
+            try {
+                FileReader fileReader = new FileReader(directorio);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+                String linea;
+                while ((linea = bufferedReader.readLine()) != null) {
+                    if (linea.startsWith("Filial: ")) {
+                        // Extraer el número de la filial actual
+                        String filialActual = linea.substring(8); // "Filial: " tiene 8 caracteres
+                        if (filialActual.equals(filialBuscada)) {
+                            encontrado = true;
+                            registrosEncontrados.append(linea).append("\n"); // Agregar la línea de la filial
+                            // Leer y agregar las siguientes líneas del registro
+                            for (int i = 0; i < 4; i++) { // Las siguientes 4 líneas corresponden a los detalles del registro
+                                registrosEncontrados.append(bufferedReader.readLine()).append("\n");
+                            }
+                            registrosEncontrados.append("-----------------------\n");
+                        }
+                    }
+                }
+
+                bufferedReader.close();
+
+                if (encontrado) {
+                    JOptionPane.showMessageDialog(null, "Registros encontrados:\n" + registrosEncontrados.toString());
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontraron registros para la filial " + filialBuscada);
+                }
+
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo de registros.");
+                e.printStackTrace();
+            }
+        }
+
+       
+       
        
        
        
