@@ -4,6 +4,9 @@
  */
 package quickpassproject;
 import javax.swing.JOptionPane;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author Lipsky
@@ -12,8 +15,10 @@ import javax.swing.JOptionPane;
    
     private Quickpass[] quickpassLista = new Quickpass[20]; //tamaño maximo se puede ampliar a mas de ser necesario
     private Quickpass[] quickpassEliminados = new Quickpass[50];
+    private QuickpassAcceso[] quickpassRegistro = new QuickpassAcceso[1000];
     private int contador = 0;
     private int contadorEliminados = 0;
+    private int contadorRegistro = 0;
     
     
         public boolean validarCodigo(String codigo) {
@@ -27,8 +32,27 @@ import javax.swing.JOptionPane;
             return true;
         }
         
+        private String valStringNoVacio(String parametro){  //Validar espacios vacios, nulls
+            String r;
+            do {
+                r = JOptionPane.showInputDialog("Ingrese el " +parametro);
+                if(r==null || r.equals(" ")|| r.equals("")){  
+                    
+                    JOptionPane.showMessageDialog(null,"Error: valor incorrecto");
+                }     
+                
+            }while(r==null || r.equals(" ") || r.equals(""));
+            return r;
+        }
+        
 
-        public void agregarQuickpass(String filial, String codigo, String placa){
+        public void agregarQuickpass(){
+            
+        String filial = this.valStringNoVacio("filial");
+        String codigo = this.valStringNoVacio("codigo");
+        String placa = this.valStringNoVacio("placa");
+        
+        
             if (validarCodigo(codigo)) {
                 if (contador < quickpassLista.length) {
                     quickpassLista[contador++] = new Quickpass(filial, codigo, placa, "Activo");
@@ -145,6 +169,69 @@ import javax.swing.JOptionPane;
            JOptionPane.showMessageDialog(null,"Quickpass no encontrado.");
        }
       
+       public boolean validarUsuario(String codigoPlaca) {
+        for(int i = 0; i< contador; i++) {
+            if(quickpassLista[i].getCodigo().equals(codigoPlaca) || quickpassLista[i].getPlaca().equals(codigoPlaca)) {
+                if(quickpassLista[i].getEstado().equals("Activo")) {
+                    return true;
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "El Quickpass existe, pero su estado es: " +quickpassLista[i].getEstado());
+                    return false;
+                }
+            }    
+        }
+        JOptionPane.showMessageDialog(null, "Quickpass no registrado en el sistema.");
+        return false;
+    }
+       
+       
+      public void registrarAcceso(){
+         String codigoPlaca = JOptionPane.showInputDialog("Ingrese el código o placa del acceso:");
+
+         
+            for (int i = 0; i< quickpassLista.length; i++){
+                if (quickpassLista[i] != null && (quickpassLista[i].getCodigo().equals(codigoPlaca) || quickpassLista[i].getPlaca().equals(codigoPlaca))) {
+                     if(quickpassLista[i].getEstado().equals("Activo")) {
+                         JOptionPane.showMessageDialog(null, "Acceso permitido. Quickpass encontrado.");
+                      
+                         if (contadorRegistro < quickpassRegistro.length){
+                          quickpassRegistro[contadorRegistro++] = new QuickpassAcceso(quickpassLista[i].getFilial(), 
+                                  quickpassLista[i].getCodigo(), 
+                                  quickpassLista[i].getPlaca(),
+                                  "Aceptado",
+                                 obtenerFechaHora());
+                            JOptionPane.showMessageDialog(null, "Acceso registrado exitosamente: \n" +
+                                                                            "Filial: " + quickpassRegistro[contadorRegistro-1].getFilial() + "\n" +
+                                                                            "Codigo: " + quickpassRegistro[contadorRegistro-1].getCodigo() + "\n" +
+                                                                            "Placa: " + quickpassRegistro[contadorRegistro-1].getPlaca() + "\n" +
+                                                                            "Condicion: " +quickpassRegistro[contadorRegistro-1].getCondicion() + "\n" +
+                                                                            "Fecha y Hora: " + quickpassRegistro[contadorRegistro-1].getFechaHora());
+                            } else {
+                            JOptionPane.showMessageDialog(null, "No hay espacio para registrar mas accesos \n");
+                            }return;
+                                
+
+                    } else {
+                       JOptionPane.showMessageDialog(null, "El Quickpass no esta activo. No se permite acceso \n");
+                       return;
+                    }
+                }
+                
+            }  
+                JOptionPane.showMessageDialog(null, "Quickpass no encontrado. Acceso denegado");
+      
+    }
+       
+       public String obtenerFechaHora() {
+           LocalDateTime fechaHoraActual = LocalDateTime.now();
+           DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+           return fechaHoraActual.format(formato); 
+      
+       }
+       
+       
+       
            
        }
     
