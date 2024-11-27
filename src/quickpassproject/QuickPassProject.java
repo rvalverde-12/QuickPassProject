@@ -64,9 +64,7 @@ public class QuickPassProject {
                            
                             
                         case 2:  // Agregar Sticker
-                            
                             manager.agregarQuickpass();
-                            
                             break;
                         case 3: //Bloquear Sticker
                             String num1 = JOptionPane.showInputDialog(null,"Ingrese codigo o placa:");
@@ -95,6 +93,7 @@ public class QuickPassProject {
                                 manager.registrarAcceso();
                                 break;
                             case 2: // Consulta por filial
+                                manager.consultaAccesoFilial();
                                 break;
                             case 3: // Consulta por fecha
                                 break;
