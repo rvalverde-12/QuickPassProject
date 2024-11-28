@@ -262,8 +262,8 @@ import java.io.IOException;
        } 
        
        
-       public void consultaAccesoFilial() {
-            String filialBuscada = JOptionPane.showInputDialog("Ingrese el número de la filial que desea consultar:");
+        public void consultarPorFilial() {
+            String filialBuscada = JOptionPane.showInputDialog("Ingrese el identificador de la filial que desea consultar:");
             String directorio = "C:\\Users\\Lipsky\\Desktop\\Tools\\Universidad\\Cuatri 2\\Intro Progra\\FinalProject\\DB_Registros.txt";
             StringBuilder registrosEncontrados = new StringBuilder();
             boolean encontrado = false;
@@ -275,13 +275,11 @@ import java.io.IOException;
                 String linea;
                 while ((linea = bufferedReader.readLine()) != null) {
                     if (linea.startsWith("Filial: ")) {
-                        // Extraer el número de la filial actual
-                        String filialActual = linea.substring(8); // "Filial: " tiene 8 caracteres
-                        if (filialActual.equals(filialBuscada)) {
+                        String filialActual = linea.substring(8).trim(); // Empieza despues de filial: y elimina espacios
+                        if (filialActual.equalsIgnoreCase(filialBuscada)) {
                             encontrado = true;
-                            registrosEncontrados.append(linea).append("\n"); // Agregar la línea de la filial
-                            // Leer y agregar las siguientes líneas del registro
-                            for (int i = 0; i < 4; i++) { // Las siguientes 4 líneas corresponden a los detalles del registro
+                            registrosEncontrados.append(linea).append("\n"); 
+                            for (int i = 0; i < 4; i++) { 
                                 registrosEncontrados.append(bufferedReader.readLine()).append("\n");
                             }
                             registrosEncontrados.append("-----------------------\n");
@@ -294,7 +292,7 @@ import java.io.IOException;
                 if (encontrado) {
                     JOptionPane.showMessageDialog(null, "Registros encontrados:\n" + registrosEncontrados.toString());
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se encontraron registros para la filial " + filialBuscada);
+                    JOptionPane.showMessageDialog(null, "No se encontraron registros para la filial ingresada: " + filialBuscada);
                 }
 
             } catch (IOException e) {
@@ -303,8 +301,9 @@ import java.io.IOException;
             }
         }
 
-       
-       
+
+
+
        
        
        
