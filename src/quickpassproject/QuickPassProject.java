@@ -22,8 +22,6 @@ public class QuickPassProject {
         int subConsulta;
         QuickpassManager manager = new QuickpassManager();
  
- 
-       
         //Menu Principal
         
         do {     
@@ -56,7 +54,7 @@ public class QuickPassProject {
                                     case 5: //volver
                                         break;
                                     default: 
-                                        JOptionPane.showMessageDialog(null, "Ingrese una opcion valida: ");
+                                        JOptionPane.showMessageDialog(null, "Ingrese una opcio valida");
                                         break;
                                          }
                             } while (subConsulta != 5);
@@ -77,7 +75,7 @@ public class QuickPassProject {
                         case 5 : //Salir
                             break;
                         default: 
-                            JOptionPane.showMessageDialog(null, "Ingrese una opcion valida: ");
+                            JOptionPane.showMessageDialog(null, "Ingrese una opcio valida");
                             break;
                         }  
                     } while (modulo1 != 5);
@@ -96,8 +94,10 @@ public class QuickPassProject {
                                 manager.consultarAccesoFilial();
                                 break;
                             case 3: // Consulta por fecha
+                                manager.consultarPorFecha();
                                 break;
                             case 4: // Consulta por codigo o placa
+                                manager.consultarAccsCodigoPlaca();
                                 break;
                             case 5: // Volver
                                 break;
@@ -116,7 +116,7 @@ public class QuickPassProject {
                     JOptionPane.showMessageDialog(null, "Saliendo del programa...");
                     break;                        
                 default:
-                    JOptionPane.showMessageDialog(null, "Datos proporcionados incorrectos"); 
+                    JOptionPane.showMessageDialog(null, "Ingrese una opcio valida"); 
             }
          } while (menuprincipal != 4);
         
