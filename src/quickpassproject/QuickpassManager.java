@@ -86,9 +86,9 @@ import java.io.IOException;
            for(int i = 0; i < contador; i++) {
                 if (quickpassLista[i].getCodigo().equals(num1) || quickpassLista[i].getPlaca().equals(num1)) {
                     Quickpass eliminado = quickpassLista[i];
-                    quickpassLista[i] = quickpassLista[contador -1];
-                    quickpassLista[contador -1] = null;
-                    contador--;
+                    quickpassLista[i] = quickpassLista[contador -1]; // i se reemplaza por el ultimo elemento de la lista
+                    quickpassLista[contador -1] = null; // la ultima posicion se marca como null
+                    contador--; // se reduce el contador 
 
                 if(contadorEliminados < quickpassEliminados.length) {
                     eliminado.setEstado("Eliminado");
@@ -263,9 +263,9 @@ import java.io.IOException;
        
        
         public void consultarAccesoFilial() {
-            String filialBuscada = JOptionPane.showInputDialog("Ingrese el numero de filial:");
+            String filialBuscada = valStringNoVacio("Ingrese el numero de filial:");
             String directorio = "C:\\Users\\Lipsky\\Desktop\\Tools\\Universidad\\Cuatri 2\\Intro Progra\\FinalProject\\DB_Registros.txt";
-            String registrosEncontrados = ""; // Inicializamos como una cadena vacía
+            String registrosEncontrados = "";
 
             try {
                 FileReader fileReader = new FileReader(directorio);
@@ -276,8 +276,8 @@ import java.io.IOException;
                 while ((linea = bufferedReader.readLine()) != null) {
                     if (linea.contains("Filial: " + filialBuscada)) {
                         encontrado = true;
-                        registrosEncontrados += linea + "\n"; // Agregamos la línea de la filial encontrada
-                        // Continuamos acumulando las líneas relacionadas hasta encontrar el separador
+                        registrosEncontrados += linea + "\n"; 
+                        
                         while ((linea = bufferedReader.readLine()) != null && !linea.equals("-----------------------")) {
                             registrosEncontrados += linea + "\n";
                         }
@@ -291,6 +291,77 @@ import java.io.IOException;
                     JOptionPane.showMessageDialog(null, "Registros encontrados:\n" + registrosEncontrados);
                 } else {
                     JOptionPane.showMessageDialog(null, "No se encontraron registros para la filial: " + filialBuscada);
+                }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        
+        public void consultarPorFecha() {
+            String fechaBuscada = valStringNoVacio("Ingrese una fecha (formato: dd/MM/yyyy):");
+            String directorio = "C:\\Users\\Lipsky\\Desktop\\Tools\\Universidad\\Cuatri 2\\Intro Progra\\FinalProject\\DB_Registros.txt";
+            String registrosEncontrados = "";
+
+            try {
+                FileReader fileReader = new FileReader(directorio);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                String linea;
+                boolean encontrado = false;
+
+                while ((linea = bufferedReader.readLine()) != null) {
+                    if (linea.contains(fechaBuscada)) { 
+                        encontrado = true;
+                        registrosEncontrados += linea + "\n"; 
+                        while ((linea = bufferedReader.readLine()) != null && !linea.equals("-----------------------")) {
+                            registrosEncontrados += linea + "\n";
+                        }
+                        registrosEncontrados += "-----------------------\n";
+                    }
+                }
+
+                bufferedReader.close();
+
+                if (encontrado) {
+                    JOptionPane.showMessageDialog(null, "Registros encontrados:\n" + registrosEncontrados);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontraron registros para la fecha: " + fechaBuscada);
+                }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        public void consultarAccsCodigoPlaca() {
+            String codigoPlaca = valStringNoVacio("Ingrese codigo o placa");
+
+            String directorio = "C:\\Users\\Lipsky\\Desktop\\Tools\\Universidad\\Cuatri 2\\Intro Progra\\FinalProject\\DB_Registros.txt";
+            String registrosEncontrados = ""; 
+
+            try {
+                FileReader fileReader = new FileReader(directorio);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                String linea;
+                boolean encontrado = false;
+
+                while ((linea = bufferedReader.readLine()) != null) {
+                    if (linea.contains("Codigo: " + codigoPlaca) || linea.contains("Placa: " + codigoPlaca)) {
+                        encontrado = true;
+                        registrosEncontrados += linea + "\n"; 
+                        while ((linea = bufferedReader.readLine()) != null && !linea.equals("-----------------------")) {
+                            registrosEncontrados += linea + "\n";
+                        }
+                        registrosEncontrados += "-----------------------\n";
+                    }
+                }
+
+                bufferedReader.close();
+
+                if (encontrado) {
+                    JOptionPane.showMessageDialog(null, "Registros encontrados:\n" + registrosEncontrados);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontraron registros para el código o placa: " + codigoPlaca);
                 }
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage());
