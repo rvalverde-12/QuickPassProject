@@ -93,7 +93,7 @@ public class QuickPassProject {
                                 manager.registrarAcceso();
                                 break;
                             case 2: // Consulta por filial
-                                manager.consultarPorFilial();
+                                manager.consultarAccesoFilial();
                                 break;
                             case 3: // Consulta por fecha
                                 break;
