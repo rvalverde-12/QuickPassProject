@@ -173,7 +173,7 @@ import java.io.IOException;
            }
            JOptionPane.showMessageDialog(null,"Quickpass no encontrado.");
        }
-      
+      /*
        public boolean validarUsuario(String codigoPlaca) {
         for(int i = 0; i< contador; i++) {
             if(quickpassLista[i].getCodigo().equals(codigoPlaca) || quickpassLista[i].getPlaca().equals(codigoPlaca)) {
@@ -188,13 +188,12 @@ import java.io.IOException;
         }
         JOptionPane.showMessageDialog(null, "Quickpass no registrado en el sistema.");
         return false;
-    }
+    }*/
        
        
       public void registrarAcceso(){
          String codigoPlaca = JOptionPane.showInputDialog("Ingrese el código o placa del acceso:");
 
-         
             for (int i = 0; i< quickpassLista.length; i++){
                 if (quickpassLista[i] != null && (quickpassLista[i].getCodigo().equals(codigoPlaca) || quickpassLista[i].getPlaca().equals(codigoPlaca))) {
                      if(quickpassLista[i].getEstado().equals("Activo")) {
@@ -208,7 +207,7 @@ import java.io.IOException;
                                  obtenerFechaHora());
 
                             JOptionPane.showMessageDialog(null, "Acceso registrado exitosamente: \n" +
-                                                                            "Filial: " + quickpassRegistro[contadorRegistro-1].getFilial() + "\n" +
+                                                                            "Filial: " + quickpassRegistro[contadorRegistro-1].getFilial() + "\n" + //le sumamos uno arriba por lo que ocupamos restarle uno para acceder
                                                                             "Codigo: " + quickpassRegistro[contadorRegistro-1].getCodigo() + "\n" +
                                                                             "Placa: " + quickpassRegistro[contadorRegistro-1].getPlaca() + "\n" +
                                                                             "Condicion: " +quickpassRegistro[contadorRegistro-1].getCondicion() + "\n" +
@@ -233,7 +232,7 @@ import java.io.IOException;
     }
        
        public String obtenerFechaHora() {
-           LocalDateTime fechaHoraActual = LocalDateTime.now();
+           LocalDateTime fechaHoraActual = LocalDateTime.now(); //formato va incluir nano segundos
            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
            return fechaHoraActual.format(formato); 
       
@@ -250,7 +249,7 @@ import java.io.IOException;
                            "Fecha y Hora: " + fechaHora + "\n"+
                            "-----------------------\n";
             try { 
-                FileWriter writer = new FileWriter(directorio, true);
+                FileWriter writer = new FileWriter(directorio, true); //creamos objeto con append true para evitar sobreescribir datos
                 writer.write(datos); //escribir
                 writer.close(); //cerrar archivo
                 
@@ -273,7 +272,7 @@ import java.io.IOException;
                 String linea;
                 boolean encontrado = false;
 
-                while ((linea = bufferedReader.readLine()) != null) {
+                while ((linea = bufferedReader.readLine()) != null) {      
                     if (linea.contains("Filial: " + filialBuscada)) {
                         encontrado = true;
                         registrosEncontrados += linea + "\n"; 
