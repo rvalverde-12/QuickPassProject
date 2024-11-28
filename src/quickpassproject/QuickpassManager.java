@@ -262,41 +262,38 @@ import java.io.IOException;
        } 
        
        
-        public void consultarPorFilial() {
-            String filialBuscada = JOptionPane.showInputDialog("Ingrese el identificador de la filial que desea consultar:");
+        public void consultarAccesoFilial() {
+            String filialBuscada = JOptionPane.showInputDialog("Ingrese el numero de filial:");
             String directorio = "C:\\Users\\Lipsky\\Desktop\\Tools\\Universidad\\Cuatri 2\\Intro Progra\\FinalProject\\DB_Registros.txt";
-            StringBuilder registrosEncontrados = new StringBuilder();
-            boolean encontrado = false;
+            String registrosEncontrados = ""; // Inicializamos como una cadena vacía
 
             try {
                 FileReader fileReader = new FileReader(directorio);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
-
                 String linea;
+                boolean encontrado = false;
+
                 while ((linea = bufferedReader.readLine()) != null) {
-                    if (linea.startsWith("Filial: ")) {
-                        String filialActual = linea.substring(8).trim(); // Empieza despues de filial: y elimina espacios
-                        if (filialActual.equalsIgnoreCase(filialBuscada)) {
-                            encontrado = true;
-                            registrosEncontrados.append(linea).append("\n"); 
-                            for (int i = 0; i < 4; i++) { 
-                                registrosEncontrados.append(bufferedReader.readLine()).append("\n");
-                            }
-                            registrosEncontrados.append("-----------------------\n");
+                    if (linea.contains("Filial: " + filialBuscada)) {
+                        encontrado = true;
+                        registrosEncontrados += linea + "\n"; // Agregamos la línea de la filial encontrada
+                        // Continuamos acumulando las líneas relacionadas hasta encontrar el separador
+                        while ((linea = bufferedReader.readLine()) != null && !linea.equals("-----------------------")) {
+                            registrosEncontrados += linea + "\n";
                         }
+                        registrosEncontrados += "-----------------------\n";
                     }
                 }
 
                 bufferedReader.close();
 
                 if (encontrado) {
-                    JOptionPane.showMessageDialog(null, "Registros encontrados:\n" + registrosEncontrados.toString());
+                    JOptionPane.showMessageDialog(null, "Registros encontrados:\n" + registrosEncontrados);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se encontraron registros para la filial ingresada: " + filialBuscada);
+                    JOptionPane.showMessageDialog(null, "No se encontraron registros para la filial: " + filialBuscada);
                 }
-
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error al leer el archivo de registros.");
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage());
                 e.printStackTrace();
             }
         }
