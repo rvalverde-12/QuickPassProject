@@ -62,7 +62,7 @@ import java.io.IOException;
                 if (contador < quickpassLista.length) {
                     quickpassLista[contador++] = new Quickpass(filial, codigo, placa, "Activo"); //constructor añade objetos a la lista
                     JOptionPane.showMessageDialog(null, "Quickpass agregado exitosamente." + "\nFilial: " + filial +"\nCodigo"
-                            + codigo + "\nPlaca: " + placa);
+                            + codigo + "\nPlaca: " + placa + "\nEstado: Activo");
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Error: No hay espacio para mas stickers.");   
@@ -85,7 +85,7 @@ import java.io.IOException;
        public void eliminarQuickpass(String num1) {
            for(int i = 0; i < contador; i++) {
                 if (quickpassLista[i].getCodigo().equals(num1) || quickpassLista[i].getPlaca().equals(num1)) {
-                    Quickpass eliminado = quickpassLista[i];
+                    Quickpass eliminado = quickpassLista[i]; //declaro variable tipo quickpass
                     quickpassLista[i] = quickpassLista[contador -1]; // i se reemplaza por el ultimo elemento de la lista
                     quickpassLista[contador -1] = null; // la ultima posicion se marca como null
                     contador--; // se reduce el contador 
@@ -134,10 +134,10 @@ import java.io.IOException;
         }
         
         public void consultarPlacaCodigo() {
-            String num1;
+
             Boolean encontrado = false;
             
-            num1 = JOptionPane.showInputDialog("Ingrese el numero de placa o codigo: ");
+           String num1 = JOptionPane.showInputDialog("Ingrese el numero de placa o codigo: ");
             for (int i = 0; i < contador; i++) {
                 
                 if (quickpassLista[i].getCodigo().equals(num1) || quickpassLista[i].getPlaca().equals(num1)) {
@@ -173,6 +173,31 @@ import java.io.IOException;
            }
            JOptionPane.showMessageDialog(null,"Quickpass no encontrado.");
        }
+       
+      public void desbloquearQuickpass() {
+            boolean encontrado = false; 
+            String num1 = JOptionPane.showInputDialog(null,"Ingrese codigo o placa:");
+
+            for (int i = 0; i < contador; i++) { 
+                if (quickpassLista[i].getCodigo().equals(num1) || quickpassLista[i].getPlaca().equals(num1)) {
+                    encontrado = true;
+
+                    if (quickpassLista[i].getEstado().equals("Bloqueado")) { 
+                        quickpassLista[i].setEstado("Activo"); 
+                        JOptionPane.showMessageDialog(null, "El Quickpass con codigo/placa: " + num1 + " ha sido desbloqueado exitosamente.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El Quickpass ya está activo.");
+                    }
+                    return; 
+                }
+            }
+
+            if (encontrado == false) { // Si no se encuentra
+                JOptionPane.showMessageDialog(null, "No se encontró un Quickpass con el código/placa: " + num1);
+            }
+        }
+
+
       /*
        public boolean validarUsuario(String codigoPlaca) {
         for(int i = 0; i< contador; i++) {
@@ -272,15 +297,15 @@ import java.io.IOException;
                 String linea;
                 boolean encontrado = false;
 
-                while ((linea = bufferedReader.readLine()) != null) {      
-                    if (linea.contains("Filial: " + filialBuscada)) {
+                while ((linea = bufferedReader.readLine()) != null) {     //continua leyendo mientras no este null
+                    if (linea.contains("Filial: " + filialBuscada)) {  //buscamos la linea que tiene filial nada mas
                         encontrado = true;
-                        registrosEncontrados += linea + "\n"; 
+                        registrosEncontrados += linea + "\n";  //acumula cada linea del registro
                         
-                        while ((linea = bufferedReader.readLine()) != null && !linea.equals("-----------------------")) {
-                            registrosEncontrados += linea + "\n";
+                        while ((linea = bufferedReader.readLine()) != null && !linea.equals("-----------------------")) { //seguimos leyendo el resto de las lineas 
+                            registrosEncontrados += linea + "\n"; 
                         }
-                        registrosEncontrados += "-----------------------\n";
+                        registrosEncontrados += "-----------------------\n"; // se añade al final para mantener el mismo formato
                     }
                 }
 
@@ -297,7 +322,7 @@ import java.io.IOException;
             }
         }
         
-        public void consultarPorFecha() {
+        public void consultarPorFecha() {   
             String fechaBuscada = valStringNoVacio("Ingrese una fecha (formato: dd/MM/yyyy):");
             String directorio = "C:\\Users\\Lipsky\\Desktop\\Tools\\Universidad\\Cuatri 2\\Intro Progra\\FinalProject\\DB_Registros.txt";
             String registrosEncontrados = "";
@@ -308,7 +333,7 @@ import java.io.IOException;
                 String linea;
                 boolean encontrado = false;
 
-                while ((linea = bufferedReader.readLine()) != null) {
+                while ((linea = bufferedReader.readLine()) != null) { 
                     if (linea.contains(fechaBuscada)) { 
                         encontrado = true;
                         registrosEncontrados += linea + "\n"; 
