@@ -34,8 +34,9 @@ public class Menus {
                                                                    1- Realizar Consulta 
                                                                    2- Agregar Sticker 
                                                                    3- Bloquear Sticker 
-                                                                   4- Eliminar Sticker 
-                                                                   5- Volver al menu principal 
+                                                                   4- Desbloquear Sticker
+                                                                   5- Eliminar Sticker 
+                                                                   6- Volver al menu principal 
                                                                    """));
 
     }
