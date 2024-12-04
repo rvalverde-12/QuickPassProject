@@ -54,7 +54,7 @@ public class QuickPassProject {
                                     case 5: //volver
                                         break;
                                     default: 
-                                        JOptionPane.showMessageDialog(null, "Ingrese una opcio valida");
+                                        JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
                                         break;
                                          }
                             } while (subConsulta != 5);
@@ -68,17 +68,20 @@ public class QuickPassProject {
                             String num1 = JOptionPane.showInputDialog(null,"Ingrese codigo o placa:");
                             manager.bloquearQuickpass(num1);
                             break;
-                        case 4: // Eliminar Sticker
+                        case 4: // Desbloquear Sticker
+                            manager.desbloquearQuickpass();
+                            break;
+                        case 5 : // Eliminar Sticker
                             String num2 = JOptionPane.showInputDialog("Ingrese codigo o placa: ");
                             manager.eliminarQuickpass(num2);
                             break;
-                        case 5 : //Salir
+                        case 6: //Salir 
                             break;
                         default: 
-                            JOptionPane.showMessageDialog(null, "Ingrese una opcio valida");
+                            JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
                             break;
                         }  
-                    } while (modulo1 != 5);
+                    } while (modulo1 != 6);
                                             
                     break;     
                     
@@ -102,7 +105,7 @@ public class QuickPassProject {
                             case 5: // Volver
                                 break;
                             default:
-                                JOptionPane.showMessageDialog(null,"Ingrese una opcio valida");
+                                JOptionPane.showMessageDialog(null,"Ingrese una opcion valida");
                         }
     
                     } while (modulo2 != 5);
@@ -116,7 +119,7 @@ public class QuickPassProject {
                     JOptionPane.showMessageDialog(null, "Saliendo del programa...");
                     break;                        
                 default:
-                    JOptionPane.showMessageDialog(null, "Ingrese una opcio valida"); 
+                    JOptionPane.showMessageDialog(null, "Ingrese una opcion valida"); 
             }
          } while (menuprincipal != 4);
         
